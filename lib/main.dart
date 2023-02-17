@@ -30,39 +30,91 @@ class _MyPlayerMusicState extends State<MyPlayerMusic> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0Xff111536),
-      appBar: AppBar(
-        backgroundColor: const Color(0Xff111536),
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(width: double.infinity, child: SearchBar()),
-            const SizedBox(
-              height: 20,
-            ),
-            sliderMusic(),
-            const SizedBox(
-              height: 10,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Recently Played',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ListRecently()
-          ],
+              SizedBox(width: double.infinity, child: SearchBar()),
+              const SizedBox(
+                height: 20,
+              ),
+              sliderMusic(),
+              const SizedBox(
+                height: 10,
+              ),
+              NameSection(),
+              const SizedBox(
+                height: 20,
+              ),
+              ListRecently(),
+              const SizedBox(
+                height: 20,
+              ),
+              NameSection(name: 'Favorite Artists'),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ListFavoriteArtist(),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding NameSection({String? name = 'Recently Played'}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        '$name',
+        textAlign: TextAlign.left,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Column ListFavoriteArtist() {
+    return Column(
+      children: [
+        CardArtist(name: "Add your favorite artists", icon: Icons.add),
+        CardArtist(name: "Dj Snake", icon: Icons.play_arrow),
+        CardArtist(name: "Dj Snake", icon: Icons.play_arrow),
+        CardArtist(name: "Dj Snake", icon: Icons.play_arrow),
+      ],
+    );
+  }
+
+  Container CardArtist({String? name, IconData icon = Icons.play_arrow}) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.01),
+        color: const Color(0xff1d1f3e),
+      ),
+      child: ListTile(
+        title: Text(
+          '$name',
+          style: const TextStyle(
+            color: Color(0xffFF7A8A),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        trailing: Icon(
+          icon,
+          color: const Color(0xffFF7A8A),
         ),
       ),
     );
