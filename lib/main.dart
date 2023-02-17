@@ -66,6 +66,40 @@ class _MyPlayerMusicState extends State<MyPlayerMusic> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: const Color(0xffFF7A8A),
+        child: const Icon(Icons.home),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomBar(),
+    );
+  }
+
+  BottomAppBar BottomBar() {
+    return BottomAppBar(
+      color: const Color(0xff1D1F3E),
+      child: Container(
+        height: 60,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              Icon(
+                Icons.radio,
+                color: Color(0xffC2C2C2),
+                size: 30,
+              ),
+              Icon(
+                Icons.person_4_rounded,
+                color: Color(0xffC2C2C2),
+                size: 30,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -134,38 +168,43 @@ class _MyPlayerMusicState extends State<MyPlayerMusic> {
         ));
   }
 
-  Container CardRecentlySong() {
-    return Container(
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: const Image(
-              image: AssetImage('assets/image1.png'),
-              width: 150,
-              height: 150,
-              fit: BoxFit.cover,
+  GestureDetector CardRecentlySong() {
+    return GestureDetector(
+      onTap: () {
+        print('object');
+      },
+      child: Container(
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: const Image(
+                image: AssetImage('assets/image1.png'),
+                width: 150,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'Urgent Siege',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const Text(
-            'Dammed die',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 15,
+            const Text(
+              'Urgent Siege',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+            const Text(
+              'Dammed die',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 15,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
