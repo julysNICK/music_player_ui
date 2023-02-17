@@ -354,67 +354,222 @@ class _MyPlayerState extends State<MyPlayer> {
             stops: [0.0, 0.5, 1.0],
           ),
         ),
-        child: SafeArea(
-          child: Stack(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                margin: const EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              right: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withOpacity(0.9),
+                      Colors.black.withOpacity(0.0),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.only(top: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.white,
                     ),
+                  ),
+                  Row(
+                    children: const [
+                      Icon(
+                        Icons.share_rounded,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.3,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xffFF7A8A),
+                      image: DecorationImage(
+                        image: AssetImage('assets/2.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.music_note,
+                      color: Colors.white,
+                      size: 50,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                height: 214,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomRight,
+                    colors: [
+                      Colors.black.withOpacity(0.9),
+                      Colors.black.withOpacity(0.0),
+                    ],
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    MusicInformation(),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Row(
-                      children: const [
-                        Icon(
-                          Icons.share_rounded,
-                          color: Colors.white,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 250,
+                          height: 5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffFF7A8A),
+                          ),
                         ),
-                        SizedBox(
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          '0:00',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                        ),
+                        Text(
+                          '3:30',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffFF7A8A),
+                          ),
+                          child: const Icon(
+                            Icons.skip_previous,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
                           width: 20,
                         ),
-                        Icon(
-                          Icons.favorite_border,
-                          color: Colors.white,
+                        Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffFF7A8A),
+                          ),
+                          child: const Icon(
+                            Icons.play_arrow,
+                            color: Colors.white,
+                            size: 40,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffFF7A8A),
+                          ),
+                          child: const Icon(
+                            Icons.skip_next,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.3,
-                left: 0,
-                right: 0,
-                child: Column(
-                  children: [
-                    Container(
-                      width: 200,
-                      height: 200,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xffFF7A8A),
-                        image: DecorationImage(
-                          image: AssetImage('assets/2.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.music_note,
-                        color: Colors.white,
-                        size: 50,
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
+    );
+  }
+
+  Column MusicInformation() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text(
+          'Follow The Leader ft. Jennifer',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          'Wisin & Yandel | Featured Song | 11.12.2021',
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 15,
+          ),
+        ),
+      ],
     );
   }
 }
